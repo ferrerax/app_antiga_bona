@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<ScrollView android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".MainActivity"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3.5"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:gravity="center"
+                    android:text="Benvinguts a l'assistent. Configureu i parleu ostia."
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginBottom="16dp"
+                        android:text="IP:" />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="22dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginRight="20dp"
+                        android:id="@+id/ip"/>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginBottom="16dp"
+                        android:text="PORT:" />
+
+                    <EditText
+                        android:id="@+id/port"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginRight="20dp"
+                        android:inputType="number" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5">
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_margin="8dp"
+                    android:text="Avanti o Populo"
+                    android:onClick="setIPPORT"
+                    android:id="@+id/avanti"/>
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:text="Command:"
+                android:textColor="@android:color/black"
+                />
+
+            <EditText
+                android:id="@+id/command"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_weight="1"
+                android:background="@android:color/black"
+                android:padding="8dp"
+                android:textColor="@android:color/white"
+                android:textSize="12sp"
+                android:scrollbars="vertical"
+                android:maxLines="3"/>
+
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:text="send"
+                android:onClick="comando"
+                android:textAllCaps="true"
+                android:id="@+id/send"/>
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:text="Server response:"
+            android:textColor="@android:color/black" />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="390dp"
+            android:id="@+id/response"
+            android:layout_margin="16dp"
+            android:background="@android:color/black"
+            android:textColor="@android:color/white"
+            android:padding="8dp"
+            android:scrollbars="vertical"
+            android:layout_weight="1"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageButton
+                android:id="@+id/mic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@android:color/transparent"
+                android:src="@drawable/baseline_mic_black_18dp"
+                android:layout_centerHorizontal="true"
+                android:onClick="getSpeechInput"
+                />
+
+            <Button
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:text="veu"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="16dp"
+                android:background="#d90e0e"
+                android:id="@+id/xerra"
+                android:onClick="xerra"/>
+        </RelativeLayout>
+
+
+
+
+    </LinearLayout>
+
+</ScrollView>
