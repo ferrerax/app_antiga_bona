@@ -149,6 +149,8 @@ public class MainActivity extends AppCompatActivity {
 
         try {
             s = new Socket(IP, PORT); //connect to server at port port
+            s.setSoTimeout(30000);
+            s.setKeepAlive(true);
             pw = new PrintWriter(s.getOutputStream());
             pw.write(resultat);
 
