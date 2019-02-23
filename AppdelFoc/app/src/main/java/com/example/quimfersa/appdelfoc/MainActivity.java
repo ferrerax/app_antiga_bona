@@ -44,8 +44,8 @@ public class MainActivity extends AppCompatActivity {
     private static final int CNL = 5;
 
     private static final int ERR = 0;
-    private static final int YNR = 1;
-    private static final int RES = 2;
+    private static final int YNR = 2;
+    private static final int RES = 1;
 
 
     private TextView comando; //es el textview que ha de servir per enviar text a la raspi.
@@ -57,8 +57,9 @@ public class MainActivity extends AppCompatActivity {
     private static Socket s;
     private TextToSpeech textToSpeech;
     private static  PrintWriter pw;
-    private String resposta_server = "BIBA VOX";
+    private String resposta_server;
     private String si_no;
+    private String rebut;
 
 
 
@@ -88,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
         textToSpeech.speak(toTalk.subSequence(0,toTalk.length()), TextToSpeech.QUEUE_FLUSH, null, "");
     }
     public void setIPPORT (View view) {
-        response.setText("Valors de IP i PORT actualitzats correctament.");
+        Toast.makeText(this, "Valors de IP i PORT actualitzats correctament." , Toast.LENGTH_LONG).show();
         EditText ipdec = (EditText) findViewById(R.id.ip);
         EditText portdec = (EditText) findViewById(R.id.port);
         IP = ipdec.getText().toString();
@@ -162,25 +163,27 @@ public class MainActivity extends AppCompatActivity {
 
             BufferedReader in = new BufferedReader(isr);
 
-            String rebut = "";
+            rebut = "";
             String res;
             while((res = in.readLine()) != null){
                 rebut += res + "\n";
             }
-            if (rebut.charAt(0) == '1'){
-                resposta_server = rebut.substring(1);
-                pregunta();
-                resultat = si_no;
-                sendText();
-
-            } else if (rebut.charAt(0) == '2'){
-                resposta_server = rebut.substring(1);
-                response.setText(resposta_server);
-            }
-
-
-            if(parla == true)this.talk();
             s.close();
+//            //response.setText(rebut);
+//            char[] aux = rebut.toCharArray();
+//            if (aux[0] == '2'){
+//                resposta_server = rebut.substring(1);
+//               popuptxt(resposta_server);
+//
+//            } else if (aux[0] == '1'){
+//                resposta_server = rebut.substring(1);
+//                response.setText(resposta_server);
+//
+//            }
+//
+//
+//            if(parla == true)this.talk();
+//            //s.close();
 
 
         } catch (IOException e) {
@@ -198,7 +201,8 @@ public void pregunta (){
         public void onClick(DialogInterface dialog, int which) {
             Toast.makeText(getApplicationContext(),"Has dit que sí", Toast.LENGTH_SHORT).show();
             si_no = "Y";
-
+            rebut = si_no;
+            //sendText();
         }
     });
 
@@ -207,6 +211,8 @@ public void pregunta (){
         public void onClick(DialogInterface dialog, int which) {
             Toast.makeText(getApplicationContext(),"Has dit que no", Toast.LENGTH_SHORT).show();
             si_no = "N";
+            rebut = si_no;
+            //sendText();
         }
     });
 
@@ -226,6 +232,24 @@ public void pregunta (){
                     resultat = TXT + resultat;
 
                     sendText();
+                    //response.setText(rebut);
+                    char[] aux = rebut.toCharArray();
+                    if (aux[0] == '2'){
+                        resposta_server = rebut.substring(1);
+                        response.setText(rebut);
+                        pregunta();
+                        resultat = si_no;
+
+                    } else if (aux[0] == '1'){
+                        resposta_server = rebut.substring(1);
+                        response.setText(resposta_server);
+
+                    }
+
+
+                    if(parla == true)this.talk();
+                    //s.close();
+
                 }
 
                 break;
