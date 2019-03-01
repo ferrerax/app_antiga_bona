@@ -18,6 +18,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -72,7 +73,8 @@ public class MainActivity extends AppCompatActivity {
         comando = (TextView) findViewById(R.id.command);
         response = (TextView) findViewById(R.id.response);
         StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder().permitNetwork().build());
-
+//        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+//        setSupportActionBar(myToolbar); //cosetes del menú
         //vaina necessaria perk la app parli
         textToSpeech = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
             @Override
