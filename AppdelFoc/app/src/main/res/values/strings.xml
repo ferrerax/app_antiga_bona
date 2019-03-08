@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">AppdelFoc</string>
     <string name="button_Label">Show Alert Two Buttons</string>
+    <string name="casa">Casa</string>
+    <string name="fora1">Fora de casa</string>
+    <string name="fora2">Auxiliar</string>
+    <string name="title_activity_screen1">Screen1</string>
+
 </resources>
